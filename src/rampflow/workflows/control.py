@@ -108,6 +108,9 @@ class RampWorkflowControl:
     def commit_hazmat_load(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
         return self._guard(operation_id, "hazmat.policy.load.committed", subject, at, action, requirements=requirements)
 
+    def commit_dg_release(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
+        return self._guard(operation_id, "dg.release.committed", subject, at, action, requirements=requirements)
+
     def commit_fuel_ledger_batch(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
         return self._guard(operation_id, "fuel.ledger.batch.committed", subject, at, action, requirements=requirements)
 
